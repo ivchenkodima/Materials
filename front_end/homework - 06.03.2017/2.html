@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+<script>
+    $age = null;
+    while($age === null){
+
+        $age = prompt("insert your age", '');
+
+        if (isNaN($age*1)){
+            alert('Insert Age');
+            $age = null;
+        }
+    }
+    if ($age>=0 && $age<6){
+        alert('Alcohol is forbidden for your age');
+    }else if($age>=6 && $age<12){
+        alert("Alcohol is forbidden for "+$age+" years old");
+    }else if($age>=12 && $age<18){
+        alert("Alcohol is forbidden for "+$age+" years old");
+    }else if($age>=18){
+        alert("Alcohol is allowed for "+$age+" years old");
+    }
+</script>
+</body>
+</html>

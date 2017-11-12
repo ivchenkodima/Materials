@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Перетаскивание элементов документа</title>
+    <script type="text/javascript">
+        (function(){
+            window.addEventListener("load", init, false);
+
+            function init() {
+                //привязываем функцию перетягиания к событию нажатия кнопки мыши на внутренний div
+                var elem = document.getElementById("elem");
+                var mainElem = document.getElementById("main_elem");
+                elem.addEventListener("mousedown", function (e) {
+                    drag(this, e, mainElem);
+                })
+            }
+
+            function drag(elementToDrag, event, mainElem) {
+                // координаты мыши в начале перетаскивания.
+                var startX = event.clientX - main_elem.offsetLeft,
+                    startY = event.clientY - main_elem.offsetTop;
+
+                // начальные координаты элемента, который будет перемещаться.
+                var origX = elementToDrag.offsetLeft,
+                    origY = elementToDrag.offsetTop;
+
+                // разница между координатами мыши и координатами перетаскиваемого элемента.
+                var deltaX = startX - origX,
+                    deltaY = startY - origY;
+
+
+                // Регистрация событий mouseup и mousemove
+                document.addEventListener("mousemove", moveHandler, true);
+                document.addEventListener("mouseup", upHandler, true);
+
+                function moveHandler(e) {
+                    if (!e) e = window.event;
+
+                    var side = '';
+                    if ((e.clientX - main_elem.offsetLeft - deltaX) <= 0) {
+                        side = 'left';
+                        changeStyle(side);
+                        return;
+                    }else if((e.clientY - main_elem.offsetTop - deltaY) <= 0){
+                        side = 'top';
+                        changeStyle(side);
+                        return;
+                    }else if((e.clientX - main_elem.offsetLeft + elementToDrag.offsetWidth - deltaX) >= main_elem.offsetWidth){
+                        side = 'right';
+                        changeStyle(side);
+                        return;
+                    }else if((e.clientY - main_elem.offsetTop + elementToDrag.offsetHeight - deltaY) >= main_elem.offsetHeight){
+                        side = 'bottom';
+                        changeStyle(side);
+                        return;
+                    }
+
+                    main_elem.style.border = '';
+
+                    // перемещаем элемент с учетом отступа от первоначального клика.
+                    elementToDrag.style.left = (e.clientX - main_elem.offsetLeft - deltaX) + "px";
+                    elementToDrag.style.top = (e.clientY - main_elem.offsetTop - deltaY) + "px";
+
+                }
+
+                function changeStyle(side){
+
+                    mainElem.style.border="1px solid red";
+
+                    switch(side){
+                        case ('left'):
+                        elementToDrag.style.left = '0px';
+                        break;
+
+                        case ('top'):
+                            elementToDrag.style.top = '0px';
+                            break;
+
+                        case ('right'):
+                            elementToDrag.style.left = '';
+                            elementToDrag.style.right = '0px';
+                            break;
+
+                        case ('bottom'):
+                            elementToDrag.style.top = '';
+                            elementToDrag.style.bottom = '0px';
+                            break;
+
+                    }
+                }
+
+                function upHandler(e) {
+                    if (!e) e = window.event;
+                    document.removeEventListener("mouseup", upHandler, true);
+                    document.removeEventListener("mousemove", moveHandler, true);
+                }
+            }
+        })()
+    </script>
+</head>
+<body>
+<div id="main_elem" style="position: relative; height: 600px; width: 800px; background: Yellow; margin:0 auto;">
+
+    <div id="elem" style="position: absolute; height: 50px; width: 50px; background: Green; top: 100px; left:100px;">
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+
+    <style>
+
+        input[type=date] {
+            height: 40px;
+            width: 160px;
+            border:1px solid darkgray;
+            color: darkgray;
+            font-size:14px;
+            outline: none;
+            padding-left:20px;
+            background-image: url(./img/date.png);
+            background-position: right;
+            background-repeat: no-repeat;
+        }
+
+        ::-webkit-inner-spin-button {
+            display: none;
+        }
+
+        ::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            width:40px;
+            height:42px;
+            cursor: pointer;
+        }
+
+        .radio {
+            display: none;
+        }
+
+        .radio-custom {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+
+        .radio-custom,
+        .label {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .radio:checked + .radio-custom::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            bottom: 4px;
+            left: 4px;
+            background: #62B4E4;
+
+        }
+
+        .radio-custom,
+        .radio:checked + .radio-custom::before {
+            border-radius: 50%;
+        }
+
+        label > * {margin-right:20px;}
+
+    </style>
+
+</head>
+<body>
+<form>
+
+    <input type="date">
+
+    <br>
+    <br>
+    <br>
+
+    <label>
+        <span class="label">Женщина</span>
+        <input class="radio" type="radio" name="radio-test">
+        <span class="radio-custom"></span>
+    </label>
+
+    <label>
+        <span class="label">Мужчина</span>
+        <input class="radio" type="radio" name="radio-test">
+        <span class="radio-custom"></span>
+    </label>
+
+</form>
+
+
+
+</body>
+</html>

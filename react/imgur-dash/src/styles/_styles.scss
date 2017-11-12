@@ -1,0 +1,57 @@
+@import 'variables';
+
+html {
+  font-size: 62.5%; // to set the base font-size to 10px and make easy calculations using rem units
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: $base_line_height;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+h1 {
+  font-size: $size_30pt;
+}
+
+h2 {
+  font-size: $size_24pt;
+}
+
+h3 {
+  font-size: $size_20pt;
+}
+
+h4 {
+  font-size: $size_16pt;
+}
+
+p, span {
+  font-size: $size_14pt;
+}
+
+a {
+  font-size: $size_14pt;
+  text-decoration: none;
+}
+
+#app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: $teal_light;
+}
+
+#main {
+  position: relative;
+  min-height: calc(100vh - #{$header_height});
+  padding: $header_padding;
+}
+
+// Overrides
+.sk-wave {
+  .sk-rect {
+    margin: 0 2px;
+    background-color: $teal_medium;
+  }
+}

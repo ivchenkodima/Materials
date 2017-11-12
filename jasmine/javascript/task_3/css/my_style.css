@@ -1,0 +1,38 @@
+body{
+    font-size: 14px;
+    line-height: 1.428;
+}
+
+.center{
+    margin: 10px 40%;
+    justify-content: center;
+}
+
+
+blockquote{
+    margin-left: 10px;
+}
+
+#err_v{
+    line-height: 2;
+    color: #a94442;
+    margin: 10px;
+}
+
+#result{
+    font-size: 16px;
+    text-align: justify;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.calculate{
+    margin-left: 20px;
+}
+
+#wrong_action{
+    font-size: 16px;
+    text-align: justify;
+    margin-top: 10px;
+}
+

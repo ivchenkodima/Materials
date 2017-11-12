@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test Title</title>
+    <!-- Bootstrap -->
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Own styles -->
+    <link href="css/my_style.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="js/calculate.js"></script>
+</head>
+<body>
+    <div class="col-md-4 center">
+        <div>
+            <div class="page-header">
+                <h1><small>To Make Calculation Press Bottom Button</small></h1>
+            </div>
+            <blockquote>
+                <p>Please click 'Calculate' button, enter first value, operation and second value in user dialog</p>
+            </blockquote>
+                <div class="btn-group calculate" role="group" aria-label="Calculate function">
+                    <button class="btn btn-lg btn-success" onclick="getResult()">Calculate</button>
+                </div>
+            </div>
+            <div class="shift">
+                <div>
+                    <p id="err_v"></p>
+                    <p id="result" role="alert" hidden></p>
+                    <p class="alert alert-danger" role="alert" hidden id="wrong_action">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Enter a valid operation
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

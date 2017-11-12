@@ -1,0 +1,44 @@
+<html> 
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Count Sum</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+
+<table id="tab" border=1>
+	<tr>
+		<td>5</td>
+		<td>3</td>
+		<td>6</td>
+		<td>8</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td>23</td>
+		<td>45</td>
+		<td>24</td>
+		<td>75</td>
+		<td>86</td>
+	</tr>
+</table>
+
+<input type="button" id="calc" value="calculate">
+
+<script>
+$( document ).ready(function() {
+	$('#calc').on('click', function(){
+		$('#tab').append('<tr>');
+		$( "tr:nth-child(1) td").each(function(i) {
+			var sum = 0;
+			$("td:nth-child(" + (i + 1) + ")").each(function () {
+                  			sum += +$(this).text();
+             			 });
+			$('#tab tr').filter(':last').append('<td>'+sum+'</td>');
+		});
+   	})
+});
+</script>
+
+</body> 
+</html>

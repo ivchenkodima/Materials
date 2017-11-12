@@ -1,0 +1,11 @@
+.Search {
+	margin-bottom: ($base-space * 2);
+
+	&__input {
+		@include ease();
+		border: none;
+		width: 100%;
+		padding: ($base-space);
+		font-size: map-get($heading-sizes, 5);
+	}
+}

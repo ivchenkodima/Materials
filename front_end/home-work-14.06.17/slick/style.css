@@ -1,0 +1,56 @@
+body{
+  background:#aaa;
+}
+
+.content{
+  max-width:600px;
+  margin:0 auto;
+}
+
+img{
+  width:100%;
+  height: auto;
+}
+
+.slider_slide{
+  position:relative;
+}
+
+.slider_text{
+  position: absolute;
+  bottom:0;
+  width:100%;
+  background: #101010;
+  opacity:0.6;
+  text-align: center;
+  color:#fff;
+}
+
+ul.slick-dots li button{
+  border: 1px solid #777;
+  border-radius: 50%;
+  transition: border-color .3s;
+}
+
+ul.slick-dots li button:before{
+content:'';
+width:10px;
+height:10px;
+ background: #777;
+ border-radius: 50%;
+ top:50%;
+ left:50%;
+ margin: -5px 0 0 -5px;
+ transition: background .3s;
+}
+
+ul.slick-dots li button:hover,
+ul.slick-dots li.slick-active button{
+  border-color: #fff;
+}
+
+ul.slick-dots li button:hover:before,
+ul.slick-dots li.slick-active button:before{
+  background: #fff;
+}
+

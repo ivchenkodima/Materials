@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Фильтрация ввода с клавиатуры</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, 'DejaVu Sans', sans-serif;
+        }
+
+        label {
+            width: 150px;
+            float: left;
+        }
+
+        input + span {
+            visibility: hidden;
+            color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        window.addEventListener("load", init, false);
+
+        function init() {
+            var input = document.getElementById("name");
+            input.addEventListener("keypress", keyFilter, false);
+            }
+
+            function keyFilter(e) {
+                if (!e) e = window.event;
+
+                if (e.charCode == 0 || e.charCode < 32) return true;
+
+                var span = document.getElementById('firstNameError');
+                if(((e.charCode <= 1040) || (e.charCode >= 1103) && (e.charCode !== 1025) && (e.charCode !== 1105))) {
+                    e.preventDefault();
+                    span.style.visibility = 'visible';
+                }else{
+                    span.style.visibility = 'hidden';
+                }
+            }
+
+    </script>
+</head>
+<body>
+<p>
+    <label>Имя</label>
+    <input type="text" id="name" data-message-id="firstNameError" />
+    <span id="firstNameError">допускаются только буквы русского алфавита</span>
+</p>
+
+</body>
+</html>

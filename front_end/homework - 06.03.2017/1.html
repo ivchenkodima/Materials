@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+</head>
+<body>
+<script>
+    $g = 9.8;
+    $v0 = null;
+    $t = null;
+    while($v0 === null || $t=== null){
+
+        $v0 = prompt("insert variable v0", '');
+        $t = prompt("insert variable t", '');
+
+        if (isNaN($v0*1) || isNaN($t*1)){
+            alert('Insert Numbers');
+            $v0 = null;
+        }
+    }
+    $h = $v0*$t + $g*Math.pow($t, 2)/2
+    alert ($h);
+</script>
+</body>
+</html>

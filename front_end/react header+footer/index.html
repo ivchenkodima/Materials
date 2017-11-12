@@ -1,0 +1,160 @@
+<head>
+  <script src="http://fb.me/react-0.13.0.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.13.0.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/Header-Picture.css">
+</head>
+<body>
+</body>
+
+<script type="text/jsx">
+  var Badge = React.createClass({
+    render: function() {
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>
+    }
+  });
+
+
+  var Thumbnail = React.createClass({
+    render: function() {
+      return <div className="col-sm-6 col-md-6">
+        <div className="thumbnail">
+          <img src={this.props.imageUrl} alt="..."></img>
+          <div className="caption">
+            <h3>{this.props.header}</h3>
+            <p>{this.props.description}</p>
+            <p>
+              <Badge title={this.props.title} number={this.props.number} />
+            </p>
+          </div>
+        </div>
+      </div>
+    }
+  });
+
+
+    var ThumbnailList = React.createClass({
+    render: function() {
+      var list = this.props.data.map(function(thumbnailProps){
+        return <Thumbnail {...thumbnailProps} />
+      });
+      return <div className="container">
+        {list}
+      </div>
+    }
+  });
+
+
+    var Header = React.createClass({
+    render: function() {
+      return  <nav className="navbar navbar-default" id="navigation-purple">
+        <div className="container">
+            <a href="#">
+              <img className="img-responsive img-circle avatar" src={this.props.img}  />
+            </a>
+
+            <div className="collapse navbar-collapse" id="myNavbar">
+                <ul className="nav navbar-nav">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">LISTS</a></li>
+                    <li><a href="#">SUPPORT</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+                 <span>{this.props.headline}</span>
+            </div>
+        </div>
+    </nav>
+    }
+  });
+
+
+      var Footer = React.createClass({
+    render: function() {
+      return  <footer className="col-md-12 col-sm-12">
+  <div className="container">
+    <div className="row">
+      <div className="col-md-4 col-sm-6 footerleft ">
+        <div className="logofooter"> 
+          <a href="#">
+              <img className="img-responsive img-circle avatar" src={this.props.img}  />
+          </a>
+        </div>
+      </div>
+      <div className="col-md-2 col-sm-6 paddingtop-bottom">
+        <h6 className="heading7">LINKS</h6>
+        <ul className="footer-ul">
+          <li><a href="#"> Home</a></li>
+          <li><a href="#"> Privacy</a></li>
+        </ul>
+      </div>
+      <div className="col-md-3 col-sm-6 paddingtop-bottom">
+        <h6 className="heading7">LATEST NEWS</h6>
+        <div className="post">
+          <p>New 1</p>
+        </div>
+      </div>
+       <div className="col-md-3 col-sm-6 paddingtop-bottom">
+        <h6 className="heading7">GITHUB</h6>
+        <div className="post">
+         <a href={this.props.link} >
+          GitHub Link    
+         </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+    }
+  });
+
+
+   var mainPage = React.createClass({
+    render: function() {
+      return <div id="wrapper">
+      <Header  {...this.props.headerData} />
+      <ThumbnailList  data={this.props.thumbnailData}  />
+      <Footer {... this.props.footerData} />
+      </div>
+    }
+  });
+
+
+  var options = {
+    thumbnailData:  [{
+      title: 'Show Courses',
+      number: 12,
+      header: 'Learn React',
+      description: 'React is a fantastic new front end library for rendering web pages. React is a fantastic new front end library for rendering web pages.',
+      imageUrl: 'https://raw.githubusercontent.com/wiki/facebook/react/react-logo-1000-transparent.png'
+    },
+
+    {
+      title: 'Show Courses',
+      number: 25,
+      header: 'Learn Gulp',
+      description: 'Gulp will speed up your development workflow.  Gulp will speed up your development workflow.  Gulp will speed up your development workflow.',
+      imageUrl: 'http://brunch.io/images/others/gulp.png'
+    }],
+
+    headerData: {
+      img: 'assets/img/logo.png',
+      headline: 'My Custom Header -> React Page',
+    },
+
+    footerData: {
+      img: 'assets/img/logo.png',
+      link: 'https://github.com/hubgitse/front_end/tree/master/react%20header%2Bfooter',
+    },
+  };
+
+  var element = React.createElement(mainPage, options);
+  React.render(element, document.body);
+</script>
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+body{
+    font-size: 14px;
+    line-height: 1.428;
+}
+
+.center{
+    margin: 10px 40%;
+    justify-content: center;
+}
+
+label{
+    font-size: 16px;
+    line-height: 1.428;
+}
+
+blockquote{
+    margin-left: 10px;
+}
+
+#err_v{
+    line-height: 1.6;
+    color: #a94442;
+}
+
+#err_t{
+    line-height: 1.6;
+    color: #a94442;
+}
+
+#result{
+    font-size: 16px;
+    text-align: justify;
+}

@@ -1,0 +1,6 @@
+{
+  "node": false,
+  "browser": false,
+  "esnext": false,
+  "newcap": false
+}

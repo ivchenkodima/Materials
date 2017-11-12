@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+
+<script>
+
+    var persons = [];
+
+    while (confirm("Add New User?")){
+        ask();
+    }
+
+    say();
+
+    function ask() {
+        var person = {
+            name: '',
+            sname: '',
+            age: ''
+        };
+        person.name = prompt("Введите свое имя:");
+        person.sname = prompt("Введите свою фамилию:");
+        person.age = prompt("Введите свой возраст:");
+        if (person.name && person.sname && person.age){
+            persons.push(person);
+        }
+    }
+
+    function say() {
+        while (persons.length-1 < 0) {
+                ask();
+        }
+
+
+        var table = '';
+        var th = '';
+        for (i = 0; i < persons.length; i++) {
+            th += "<tr>";
+            table += "<tr>";
+            for (item in persons[i]) {
+                table += "<td>" + persons[i][item] + "</td>";
+                if (i === 0){
+                    th += "<th>" + [item] + "</th>"
+                };
+          }
+            table += "</tr>";
+            th += "</tr>";
+       }
+        show_table(table, th);
+    }
+
+    function show_table (table, th){
+        var show = document.createElement('table');
+        show.innerHTML = th + table;
+        document.body.appendChild(show);
+        show.setAttribute('border', '1');
+    }
+
+
+</script>
+</body>
+</html>

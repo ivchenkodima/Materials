@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Test Title</title>
+    <!-- Bootstrap -->
+    <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- Own styles -->
+    <link href="css/my_style.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../bootstrap/js/bootstrap.js"></script>
+    <script src="js/calcPermission.js"></script>
+</head>
+<body>
+    <div class="col-md-4 center">
+        <div>
+            <div class="page-header">
+                <h1><small>Check that alcohol purchase is allowed to you</small></h1>
+            </div>
+            <blockquote>
+                <p>Please enter your age in a field below</p>
+            </blockquote>
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="text" class="form-control" id="age" placeholder="Your age"/>
+                    <p id="err_v"></p>
+                </div>
+                <div class="btn-group" role="group" aria-label="Calculate function">
+                    <button class="btn btn-default clear" onclick="clearInput()">Clear</button>
+                    <button class="btn btn-success calculate" onclick="getPurchasePermission()">Calculate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shift">
+        <div>
+            <p id="result" role="alert" hidden></p>
+        </div>
+    </div>
+</body>
+</html>

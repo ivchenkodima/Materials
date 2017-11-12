@@ -1,0 +1,19 @@
+.wrapper{
+	padding-top:100px;
+	max-width: 600px;
+	height:  100%;
+	margin:0 auto;
+	text-align: center;
+}
+
+.display{
+	
+	font-size: 100px;
+	color:red;
+	box-shadow: 
+}
+
+button{
+	width:200px;
+	font-size: 70px;
+}

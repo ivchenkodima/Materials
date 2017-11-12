@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+</head>
+<body>
+<script>
+    $first = Number(prompt("insert first number", ''));
+    $action = prompt('insert action (+ - * / %)', '');
+    $second = Number(prompt("insert second number", ''));
+
+    switch ($action){
+        case ('+'):
+            $result = $first + $second;
+            break;
+
+        case ('-'):
+            $result = $first - $second;
+            break;
+
+        case ('*'):
+            $result = $first * $second;
+            break;
+
+        case ('/'):
+            if ($second == 0){
+                $result = 'You can\'t divide it by zero';
+                break;
+            }
+            $result = $first / $second;
+            break;
+
+        case ('%'):
+            if ($second == 0){
+                $result = 'You can\'t divide it by zero';
+                break;
+            }
+            $result = $first % $second;
+            break;
+    }
+
+    alert ($result);
+
+</script>
+</body>
+</html>

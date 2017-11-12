@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Параметр queue</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // параметр queue — булево значение, указывающее, следует ли помещать текущую анимацию в очередь функций. 
+        // В случае false, анимация будет запущена сразу же, не вставая в очередь (функции будут запускаться одновременно).
+        var a  = {
+           height: '150px'
+        };
+        var b ={
+            queue: true,   
+            duration: 5000
+        };
+
+        $(function () {
+
+    
+
+            $("div")
+                .animate({
+                   height: '50px',
+                }, 5000)
+                .animate(a,b);
+        });
+
+    </script>
+    <style>
+        div {
+
+            background-color: Green;
+            width: 100px; 
+            height: 100px;
+            text-align: center;
+            color: White;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        Test div
+    </div>
+</body>
+</html>

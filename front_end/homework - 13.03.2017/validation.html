@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+
+<form id="form">
+    <input type = "text" class="email" placeholder="введи email" onblur = validation(this)>
+    <input type = "text" class="tel" placeholder="введи tel number" onblur = validation(this)>
+    <input type = "text" class="name" placeholder="введи name" onblur = validation(this)>
+    <input type = "text" class="age" placeholder="введи age" onblur = validation(this)>
+</form>
+
+<script>
+    function validation(myInput){
+        switch (myInput.className){
+            case 'email':
+                var pattern = /^[0-9a-z-_\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i;
+                break;
+
+            case 'tel':
+                var pattern = /^0(67|50|95|97|63)[0-9]{7}$/i;
+                break;
+
+            case 'name':
+                var pattern =  /^[A-Za-z ]+$/i;
+                break;
+
+            case 'age':
+                var pattern =  /^[0-9]+$/;
+                break;
+        }
+
+        var inputValue = myInput.value;
+       if (!pattern.test(inputValue)){
+            myInput.style.border="1px solid red";
+        }else{
+            myInput.style.border="";
+       }
+    }
+
+</script>
+
+</body>
+</html>

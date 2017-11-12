@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2</title>
+</head>
+<body>
+<script>
+    first = Number(prompt("insert first number", ''));
+    action = prompt('insert action (+ - * / %)', '');
+    second = Number(prompt("insert second number", ''));
+
+    function result(a, operator, b, count){
+        if (operator === '+'){
+            result = a + b;
+        }
+        if (operator === '-'){
+            result = a - b;
+        }
+        if (operator === '*'){
+            result = a * b;
+        }
+        if (operator === '/'){
+            if(b == 0){
+                result = 'На 0 делить нельзя';
+            }else{
+                result = a / b;
+            }
+        }
+        if (operator === '%'){
+            if(b == 0){
+                result = 'На 0 делить нельзя';
+            }else{
+                result = a % b;
+            }
+        }
+        count(result);
+    }
+
+    result (first, action, second, function(r){
+      alert(r);
+    });
+
+
+</script>
+</body>
+</html>

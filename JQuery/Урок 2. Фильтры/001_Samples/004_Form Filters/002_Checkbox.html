@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Фильтр :checkbox</title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        // :checkbox - фильтр для выбора всех элементов "checkbox".
+
+        $(function () {
+
+            var count = $(":checkbox[checked]");
+            console.log(count);
+            $(".output").text("Количество элементов \"checkbox\" на странице - " + count);
+
+        });
+
+    </script>
+</head>
+<body>
+    <form>
+        <p><strong>Выбор пиццы:</strong></p>
+        Большая
+        <input type="checkbox" value="big" checked/><br />
+        Средняя
+        <input type="checkbox" value="medium" /><br />
+        Маленькая
+        <input type="checkbox" value="small" checked />
+        <p><strong>Способ получения:</strong></p>
+        Доставка по Киеву
+        <input type="radio" name="delivery" value="car" /><br />
+        Самовывоз
+        <input type="radio" name="delivery" value="self" /><br />
+        <input type="submit" value="Заказать" />
+        <p class="output"></p>
+    </form>
+</body>
+</html>

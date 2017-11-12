@@ -1,0 +1,68 @@
+<head>
+  <script src="http://fb.me/react-0.13.0.js"></script>
+  <script src="http://fb.me/JSXTransformer-0.13.0.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/css.css">
+</head>
+<body>
+</body>
+
+<script type="text/jsx">
+
+    var Button = React.createClass({
+     myClick: function() {
+      this.props.operation(this.props.content);
+  },
+
+    render: function() {
+      return  <button 
+      onClick={this.myClick}>
+          {this.props.content}
+      </button>
+    },
+  });
+
+  var Display = React.createClass({
+    getInitialState: function(){
+    return {
+      start: 0,
+    }
+  },
+
+    myoperation: function(sign) {
+     this.setState({
+     start: sign == '+' ? this.state.start + 1 : this.state.start - 1,
+    });
+  },
+
+    render: function() {
+        var buttons = this.props.sign.map(item => {
+       return <Button
+               operation= {this.myoperation}
+                content = {item}
+                key = {item}
+              />});
+
+      return  <div className="wrapper">
+        <div className = "display">
+          {this.state.start}
+        </div>
+        <div className = "buttons">
+            {buttons}
+        </div>
+      </div>
+    }
+  });
+
+
+  var options = {
+    sign: [
+    '-',
+    '+',
+  ]
+  };
+
+  var element = React.createElement(Display, options);
+  React.render(element, document.body);
+</script>
+

@@ -1,0 +1,52 @@
+.media-container {
+  text-align: center;
+}
+
+.preview {
+  display: inline-block;
+  position: relative;
+  animation: fadein .65s ease-out;
+
+  .glyphicon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 96px;
+    height: 96px;
+    transform: translate(-50%, -50%);
+    opacity: .5;
+    z-index: 2;
+  }
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100%{
+      opacity: 1.0;
+    }
+  }
+
+  .preview__image {
+    height: 200px;
+    width: 200px;
+    display: inline-block;
+  }
+
+  .preview__video {
+    height: 200px;
+    width: 200px;
+    background-color: black;
+  }
+
+  .preview--hover {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    color: $teal_strong;
+    text-align: center;
+    opacity: .7;
+  }
+}

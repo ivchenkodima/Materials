@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html ng-app="studyModule">
+<head>
+    <title>Filters Chain</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script>
+    angular.module("studyModule", [])
+        .controller("studyCtrl", function ($scope) {
+            $scope.items = [
+                { itemName: "milk1", itemCategory: "Dairy", itemPrice: 1.40, resolved: false },
+                { itemName: "cheese1", itemCategory: "Dairy", itemPrice: 2.40, resolved: false },
+                { itemName: "water2", itemCategory: "Drinks", itemPrice: 1.20, resolved: true },
+                { itemName: "milk2", itemCategory: "Dairy", itemPrice: 1.40, resolved: false },
+                { itemName: "cheese2", itemCategory: "Dairy", itemPrice: 2.40, resolved: false },
+                { itemName: "water3", itemCategory: "Drinks", itemPrice: 1.20, resolved: true },
+                { itemName: "milk3", itemCategory: "Dairy", itemPrice: 1.40, resolved: false },
+                { itemName: "cheese3", itemCategory: "Dairy", itemPrice: 2.40, resolved: false },
+                { itemName: "water3", itemCategory: "Drinks", itemPrice: 1.20, resolved: true },
+
+            ];
+            $scope.modelvalue = false;
+            $scope.changeModelValue = function() {
+                $scope.modelvalue = !$scope.modelvalue;                
+            }
+        })
+        .filter("showResolved", function () {
+            return function (value, boolian) {
+                var result = [];
+                if(boolian == false) return value;
+                value.map(function(item) {
+                    if(item.resolved === false) result.push(item);
+                })
+                return result;
+                
+        };
+});
+    </script>
+</head>
+<body ng-controller="studyCtrl">
+    <div ng-repeat="item in items | showResolved:modelvalue">
+        <div>
+            <span class="h4">Category: {{item.itemName}}</span>
+            <span class="h4">Done: {{item.resolved}}</span>
+        </div>
+    </div>
+    <button ng-click='changeModelValue()'>Push me!</button>
+
+</body>
+    </html>

@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html ng-app>
+<head>
+    <script src="../../angular.js"></script>
+
+    <script src="list.js"></script>
+    <link rel="stylesheet" href="list.css">
+    <link href="../../bootstrap.css" rel="stylesheet" />
+    <link href="../../bootstrap-theme.css" rel="stylesheet" />
+</head>
+<body>
+    <div style="width:400px; margin:0 auto">
+        <h2 class="h1">Список покупок</h2>
+        <div class="panel" ng-controller="ListCtrl">
+            <span class="h4">Осталось {{remain()}} из {{items.length}}</span>
+            <table class="table table-striped">
+                <tbody>
+                    <tr ng-repeat="item in items">
+
+                        <td>
+                            <input class="checkbox-inline" type="checkbox" ng-model="item.done">
+                        </td>
+
+                        <td>
+                            <span class="done-{{item.done}}">
+                                {{item.text}}
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form ng-submit="addItem()">
+                <input class="form-control" type="text" 
+                ng-model="itemText" size="30" placeholder="Добавить покупку">
+                <input class="btn btn-primary" type="submit" value="Добавить">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

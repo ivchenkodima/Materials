@@ -1,0 +1,198 @@
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    *:before, *:after {
+      box-sizing: border-box;
+    }
+    body {
+      background: black;
+    }
+    .main {
+      position: absolute;
+      background: #f12e50;
+      top: 50%;
+      left: 50%;
+      width: 40%;
+      max-width: 30em;
+      min-width: 15em;
+      transform: translate(-50%, -50%);
+      overflow: hidden;
+    }
+    .main .title {
+      color: #fff;
+      background: #c80e3d;
+      text-align: center;
+      font-weight: 700;
+      line-height: 1.2em;
+      padding: 1em;
+    }
+    .section {
+      position: relative;
+      width: 100%;
+      border-bottom: 5px solid #c80e3d;
+      border-left: 2px solid #c80e3d;
+      border-right: 2px solid #c80e3d;
+    }
+    .section button {
+      position: absolute;
+      right: 0;
+      margin: 0;
+      padding: 0;
+      height: 3em;
+      width: 3em;
+      outline: 0;
+      border: 0;
+      background: none;
+      text-indent: -9999%;
+      pointer-events: none;
+    }
+    .section button:before {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 12px;
+      width: 4px;
+      border-radius: 0.3em;
+      background: #ee0c4b;
+      transform-origin: 50%;
+      top: 50%;
+      left: 50%;
+      transition: all 0.25s ease-in-out;
+      transform: translate(75%, -50%) rotate(45deg);
+    }
+    .section button:after {
+      content: '';
+      display: block;
+      position: absolute;
+      height: 12px;
+      width: 4px;
+      border-radius: 0.3em;
+      background: #ee0c4b;
+      transform-origin: 50%;
+      top: 50%;
+      left: 50%;
+      transition: all 0.25s ease-in-out;
+      transform: translate(-75%, -50%) rotate(-45deg);
+    }
+    .section.open button:before, .section.open button:after {
+      height: 14px;
+    }
+    .section.open button:before {
+      transform: translate(0%, -50%) rotate(-45deg);
+    }
+    .section.open button:after {
+      transform: translate(0%, -50%) rotate(45deg);
+    }
+    .section.open .articlewrap {
+      height: 120px;
+    }
+    .articlewrap {
+      height: 0;
+      overflow: hidden;
+      transition: all 0.2s ease-in;
+    }
+    .sectionhead {
+      width: 100%;
+      overflow: hidden;
+      background: white;
+      cursor: pointer;
+      font-weight: 700;
+      color: #888;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding: 1em;
+      padding-right: 2.1em;
+    }
+    .article {
+      padding: 1em;
+      color: #333;
+      line-height: 1.3;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="accordian"></div>
+</body>
+
+<script type="text/jsx">
+  var Section = React.createClass({
+    render: function() {
+    console.log(this.props);
+    return (
+        <div className={this.props.active ? 'section open' : 'section'}>
+          <button>toggle</button>
+          <div
+            className="sectionhead"
+            onClick={() => this.props.onClick(this.props.id)}
+          >{this.props.title}
+          </div>
+          <div className="articlewrap">
+            <div className="article">
+              {this.props.children}
+            </div>
+          </div>
+        </div>
+      );
+    }
+  });
+
+  var Accordion = React.createClass({
+    handleClick: function(id){
+      this.state.id === id ?
+        this.setState({ id: null }) :
+        this.setState({ id });
+    },
+    getInitialState: function(){
+      return {
+        open: false,
+        class: "section",
+        id: null
+      }
+    },
+    render: function() {
+      var data = [
+        {
+          title: 'one',
+          description: 'one'
+        },{
+          title: 'two',
+          description: 'two'
+        },{
+          title: 'three',
+          description: 'three'
+        }];
+
+      return (
+        <div className="main">
+          <div className="title">{this.props.title}</div>
+          {
+            data.map(function(item, key) {
+              return (<Section
+                        key={key}
+                        id={key}
+                        title={item.title}
+                        active={this.state && this.state.id === key}
+                        onClick={this.handleClick.bind(this)}
+                      >
+                  {item.description}
+                  </Section>
+              )
+            }.bind(this))
+          }
+        </div>
+      )
+    }
+  });
+  var options = {
+    title: "Our accordion"
+  };
+
+  var element = React.createElement(Accordion, options);
+  React.render(element, document.getElementById('accordian'));
+
+</script>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1</title>
+</head>
+<body>
+<script>
+   var mass = ['first1', 'first2', 'first3', 'first4', 'first5', 'first6', 'first7', 'first8', 'first9', 'first10'];
+   var count = mass.length-1;
+   var interim;
+   for(i = 0; i < count/2; i++){
+       interim = mass[i];
+       mass[i] =  mass[(count - i)];
+       mass[(count - i)] = interim;
+   }
+   alert (mass);
+</script>
+</body>
+</html>
